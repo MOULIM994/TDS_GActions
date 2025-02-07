@@ -1,0 +1,23 @@
+name: My GitHub Action
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: mouli.muralikrishnan@straive.com
+        run: echo "Hello, world! This action was triggered by a $(echo $GITHUB_EVENT_NAME) event on branch $(echo $GITHUB_REF)"
+
+      - name: Another Step (Optional)
+        run: |
+          echo "This is another step."
+          echo "You can run multiple commands here."
