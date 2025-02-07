@@ -39,5 +39,8 @@ jobs:
           git commit -m "Daily commit on $(date)"
 
       - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GAction_TOKEN }}
         run: |
+          git remote set-url origin https://$GITHUB_TOKEN@github.com/MOULIM994/TDS_GActions.git
           git push origin HEAD:main
