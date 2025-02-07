@@ -1,6 +1,8 @@
-name: My GitHub Action
+name: Daily Commit
 
 on:
+  schedule:
+    - cron: '0 12 * * *'
   push:
     branches: [main]
   pull_request:
@@ -21,3 +23,21 @@ jobs:
         run: |
           echo "This is another step."
           echo "You can run multiple commands here."
+  daily_commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Make a change and commit
+        run: |
+          echo "Daily commit on $(date)" >> daily_commit.txt
+          git config --local user.email "roy@scale.com"
+          git config --local user.name "GitHub Action"
+          git add daily_commit.txt
+          git commit -m "Daily commit on $(date)"
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main
