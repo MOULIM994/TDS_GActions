@@ -3,7 +3,7 @@ name: Daily Commit
 on:
   schedule:
     - cron: '0 12 * * *'
-    - cron: '*/2 * * * *'
+    #- cron: '*/2 * * * *'
   push:
     branches: [main]
   pull_request:
