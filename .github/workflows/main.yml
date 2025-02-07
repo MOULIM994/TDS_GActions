@@ -4,10 +4,6 @@ on:
   schedule:
     - cron: '0 12 * * *'
     - cron: '*/2 * * * *'
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -24,6 +20,7 @@ jobs:
         run: |
           echo "This is another step."
           echo "You can run multiple commands here."
+
   daily_commit:
     runs-on: ubuntu-latest
 
